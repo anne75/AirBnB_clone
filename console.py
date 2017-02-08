@@ -7,12 +7,12 @@ class myPrompt(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_quit(self, args):
-        """ Implements the quit command"""
+        """Implements the quit command"""
         raise SystemExit
 
     def do_EOF(self, args):
         """Implements EOF"""
-        raise EOFError
+        return True
 
 if __name__ == "__main__":
     myPrompt().cmdloop()
