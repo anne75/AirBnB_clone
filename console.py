@@ -14,5 +14,13 @@ class myPrompt(cmd.Cmd):
         """Implements EOF"""
         return True
 
+    def emptyline(self):
+        """Orverrides empty line default behavior"""
+        pass
+
+    def postloop(self):
+        """Prints a newline after EOF"""
+        print()
+
 if __name__ == "__main__":
     myPrompt().cmdloop()
