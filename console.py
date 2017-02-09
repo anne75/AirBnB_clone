@@ -22,7 +22,7 @@ class myPrompt(cmd.Cmd):
     postloop
     """
 
-    prompt = '(AirBnB)'
+    prompt = '(hbnb)'
 
     def do_quit(self, args):
         """Quit command to exit the program"""
