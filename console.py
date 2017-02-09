@@ -1,17 +1,35 @@
 #!/usr/bin/python3
+"""
+This is module console.py.
+It is the main entry point for the command line interpreter.
+"""
 import cmd
 import sys
 
 
 class myPrompt(cmd.Cmd):
-    prompt = '(hbnb) '
+    """
+    Subclass of Cmd to create a simple command line interpreter for
+    the AirBnB_clone project.
+
+    **Class variables**
+    prompt: the command prompt
+
+    **Instance methods**
+    do_quit
+    do_EOF
+    emptyline
+    postloop
+    """
+
+    prompt = '(AirBnB)'
 
     def do_quit(self, args):
-        """Implements the quit command"""
+        """Quit command to exit the program"""
         raise SystemExit
 
     def do_EOF(self, args):
-        """Implements EOF"""
+        """Quit program at End Of File (or ctrl+D)"""
         return True
 
     def emptyline(self):
