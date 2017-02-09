@@ -9,8 +9,15 @@ It covers the following fields:
 - A database or files that store data (data = objects)
 - A command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging)
 
-
 ##description of the command interpreter:
 ####     how to start it
+The command interpreter starts when running `./console.py`.  
+It can work both in interactive and non interactive mode (see examples).  
+The following commands have been implemented:  
+| Command | Definition                                    |
+|:-------:| ----------------------------------------------|
+| `help`  | to get help about other commands.             |
+| `quit`  |or `EOF` (end of file) | to terminate session. |
+
 ####     how to use it
 ####     examples
