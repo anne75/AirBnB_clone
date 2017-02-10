@@ -2,7 +2,7 @@
 import json
 import datetime
 
-json.JSONEncoder.default=lambda self, obj: (obj.isoformat() if isinstance(obj, datetime.datetime) else None)
+"""json.JSONEncoder.default=lambda self, obj: (obj.isoformat() if isinstance(obj, datetime.datetime) else obj.__dict__)"""
 class FileStorage:
     def __init__(self):
         self.__file_path = "./file.json"
@@ -17,7 +17,7 @@ class FileStorage:
 
     def save(self):
        with open(self.__file_path, mode='w', encoding='utf-8') as fhandle:
-            json.dump(self.__objects, fhandle)
+            json.dump(self.__objects, fhandle, default=lambda obj: (obj.isoformat() if isinstance(obj, datetime.datetime) else obj.__dict__))
 
     def reload(self):
         try:
@@ -25,7 +25,6 @@ class FileStorage:
                 json.load(self.__objects, fhandle)
         except FileNotFoundError:
             pass
-
     def mySerialize(obj):
         if isinstance(obj, datetime):
             return obj.isoformat()
