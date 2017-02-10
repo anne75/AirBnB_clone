@@ -22,7 +22,7 @@ class FileStorage:
     def reload(self):
         try:
             with open(self.__file_path, mode='r', encoding='utf-8') as fhandle:
-                json.load(self.__objects, fhandle)
+                self.__objects = json.load(fhandle)
         except FileNotFoundError:
             pass
     def mySerialize(obj):
