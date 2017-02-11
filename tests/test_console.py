@@ -7,10 +7,11 @@ the parent directory
 """
 import unittest
 import sys
-import os
+from unittest.mock import patch
+from io import StringIO
 
 # needed, import does not work, and relative path does not work either
-sys.path.insert(1,'/home/vagrant/projects/AirBnB_clone')
+# sys.path.insert(1,'/home/vagrant/projects/AirBnB_clone')
 import console
 
 class TestConsole(unittest.TestCase):
@@ -19,18 +20,18 @@ class TestConsole(unittest.TestCase):
 
     **Instance methods**
     """
+    def setUp(self):
+        """Redirects stdin and stdout"""
+        self.command = console.myPrompt()
+
     def test_help(self):
         """
         Tests the help command
         """
-        help_prompt = console.myPrompt().do_help
-        # must redirect print to something, needs a return value
-        self.assertEqual(help_prompt(""), """
-Documented commands (type help <topic>):
-========================================
-EOF  help  quit
-
-""")
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            self.assertFalse(self.command.onecmd("help"))
+            # must redirect print to something, needs a return value
+            self.assertEqual("""\nDocumented commands (type help <topic>):\n========================================\nEOF  help  quit\n""", fake_out.getvalue().strip())
 
 if __name__ == "__main__":
     unittest.main()
