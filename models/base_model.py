@@ -8,15 +8,14 @@ import uuid
 import json
 from models import storage
 
+
 class BaseModel:
     """
     Defines all common attributes and methods for other classes
     """
-
     def __init__(self, *args, **kwargs):
         """
         Creates a BaseModel object
-
         Arguments:
             if any should be a dictionary containing following keys
             id: a string, unique user id
@@ -36,7 +35,8 @@ class BaseModel:
 
     def __str__(self):
         """fancy printing"""
-        return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        return ("[{}] ({}) {}".format(
+                            self.__class__.__name__, self.id, self.__dict__))
 
     def __setattr__(self, name, value):
         """
