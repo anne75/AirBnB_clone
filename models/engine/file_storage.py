@@ -9,6 +9,7 @@ It defines one class
 # json.JSONEncoder.default=lambda self, obj: (obj.isoformat() if isinstance
 # (obj, datetime.datetime) else obj.__dict__)"""
 
+
 class FileStorage:
     """
     Serialize and deserialize objects in models to json
@@ -39,7 +40,9 @@ class FileStorage:
     def save(self):
         """serializes __objects to file __file_path in json format"""
         with open(self.__file_path, mode='w', encoding='utf-8') as fhandle:
-            json.dump(self.__objects, fhandle, default=lambda obj: (obj.isoformat() if isinstance(obj, datetime.datetime) else obj.__dict__))
+            json.dump(self.__objects, fhandle, default=lambda obj: (
+                obj.isoformat() if isinstance(
+                    obj, datetime.datetime) else obj.__dict__))
 
     def reload(self):
         """deserializes the json file __file_path to __objects"""
