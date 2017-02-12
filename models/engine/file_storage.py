@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import json
 import datetime
+# from models.base_model import BaseModel
 """
 This is module file_storage.
 It defines one class
@@ -44,10 +45,14 @@ class FileStorage:
 
     def reload(self):
         """deserializes the json file __file_path to __objects"""
+        from models.base_model import BaseModel
+
         try:
             with open(self.__file_path, mode='r', encoding='utf-8') as fhandle:
                 self.__objects = json.load(fhandle)
                 # json.load(self.__objects, fhandle.__dict__)
+            for i, j in self.__objects.items():
+                self.__objects[i] = BaseModel(**j)
         except FileNotFoundError:
             pass
 

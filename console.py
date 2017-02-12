@@ -63,7 +63,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, args):
         "Displays an object based on its class and id"""
-        args = [x.strip() for x in args[0].split()]
+        print(type(args))
+        if args:
+            args = [x.strip() for x in args.split()]
+            print(args)
         if len(args) == 2:
             if args[0] in HBNBCommand.myClasses.keys():
                 result = "{}.{}".format(args[0], args[1])

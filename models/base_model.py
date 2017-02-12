@@ -24,19 +24,27 @@ class BaseModel:
         """
         if kwargs:
             self.id = kwargs['id']
-            self.created_at = datetime(*(kwargs['created_at']))
-            self.updated_at = datetime(*(kwargs['updated_at']))
+            self.created_at = datetime(*self.str_to_numbers(
+                kwargs['created_at']))
+            self.updated_at = datetime(*self.str_to_numbers(
+                kwargs['updated_at']))
         elif args:
             if len(args) != 3:
                 pass
             self.id = args[0]
-            self.created_at = datetime(*(args[1]))
-            self.updated_at = datetime(*(args[2]))
+            self.created_at = datetime(*self.str_to_numbers(args[1]))
+            self.updated_at = datetime(*self.str_to_numbers(args[2]))
         else:
             setattr(self, 'id', str(uuid.uuid4()))
             setattr(self, 'created_at', datetime.now())
             setattr(self, 'updated_at', datetime.now())
             storage.new(self)
+
+    def str_to_numbers(self, s):
+        """Prepares a string for datetime"""
+        tmp = ''.join([ o if o not in "T;:.,-_" else " " for o in s]).split()
+        res = [int(i) for i in tmp]
+        return res
 
     def __str__(self):
         """fancy printing"""
