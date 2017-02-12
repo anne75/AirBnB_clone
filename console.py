@@ -60,8 +60,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_show(self, *args):
+    def do_show(self, args):
         "Displays an object based on its class and id"""
+        args = [x.strip() for x in args[0].split()]
         if len(args) == 2:
             if args[0] in HBNBCommand.myClasses.keys():
                 result = "{}.{}".format(args[0], args[1])

@@ -22,10 +22,8 @@ class FileStorage:
             filename: path to file
             objects: empty dictionary, not required
         """
-        # print("INIT OBJECT", objects)
         self.__file_path = filename
         self.__objects = objects
-        # print("INIT FS", self.__objects)
 
     def all(self):
         """Returns __objects"""
