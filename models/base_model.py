@@ -42,7 +42,7 @@ class BaseModel:
 
     def str_to_numbers(self, s):
         """Prepares a string for datetime"""
-        tmp = ''.join([ o if o not in "T;:.,-_" else " " for o in s]).split()
+        tmp = ''.join([o if o not in "T;:.,-_" else " " for o in s]).split()
         res = [int(i) for i in tmp]
         return res
 

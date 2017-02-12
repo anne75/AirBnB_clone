@@ -38,5 +38,11 @@ class TestConsole(unittest.TestCase):
                         \nEOF  help  quit\n""",
                              fake_out.getvalue().strip())
 
+    def test_quit(self):
+        pass
+
+    def test_EOF(self):
+        pass
+
 if __name__ == "__main__":
     unittest.main()
