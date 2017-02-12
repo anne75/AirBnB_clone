@@ -23,7 +23,7 @@ class TestConsole(unittest.TestCase):
     """
     def setUp(self):
         """Redirects stdin and stdout"""
-        self.command = console.myPrompt()
+        self.command = console.HBNBCommand()
 
     def test_help(self):
         """
