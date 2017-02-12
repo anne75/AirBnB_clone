@@ -30,7 +30,8 @@ class HBNBCommand(cmd.Cmd):
     postloop
     """
     myClasses = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity,
-                 "City": City, "Place": Place, "Review":Review, "State":State}
+                 "City": City, "Place": Place,
+                 "Review": Review, "State": State}
     prompt = '(hbnb) '
 
     def do_quit(self, args):
