@@ -69,5 +69,5 @@ class BaseModel:
 
     def to_json(self):
         """Prepares serialization"""
-        self.__dict__.update({"__class__": "BaseModel"})
+        self.__dict__.update({"__class__": self.__class__.__name__})
         return self.__dict__
