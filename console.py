@@ -5,6 +5,7 @@ It is the main entry point for the command line interpreter.
 """
 import cmd
 import sys
+from models.base_model import BaseModel
 
 
 class myPrompt(cmd.Cmd):
@@ -21,8 +22,8 @@ class myPrompt(cmd.Cmd):
     emptyline
     postloop
     """
-
-    prompt = '(hbnb)'
+    myClasses = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State"]
+    prompt = '(hbnb) '
 
     def do_quit(self, args):
         """Quit command to exit the program"""
@@ -33,12 +34,31 @@ class myPrompt(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """Orverrides empty line default behavior"""
+        """Overrides empty line default behavior"""
         pass
 
     def postloop(self):
         """Prints a newline after EOF"""
         print()
+
+    def do_create(self, args):
+        """ Creates a new instance of BaseModel"""
+        if len(args) > 0 and args in myPrompt.myClasses:
+            myStore = BaseModel()
+            myStore.save()
+            print(myStore.id)
+        elif args == 0:
+            print("** class name missing **")
+        else:
+            # ADD message for id as well
+            print("** class doesn't exist **")
+    """
+    def do_show(self, args):
+        if len(args) == 2 and args in myPrompt.myClasses:
+           myStore = BaseModel()
+           print(myStore.id)
+        else
+    """
 
 if __name__ == "__main__":
     myPrompt().cmdloop()
