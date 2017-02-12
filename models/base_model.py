@@ -37,7 +37,6 @@ class BaseModel:
         else:
             setattr(self, 'id', str(uuid.uuid4()))
             setattr(self, 'created_at', datetime.now())
-            setattr(self, 'updated_at', datetime.now())
             storage.new(self)
 
     def str_to_numbers(self, s):
