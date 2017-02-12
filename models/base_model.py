@@ -24,13 +24,18 @@ class BaseModel:
         """
         if kwargs:
             self.id = kwargs['id']
-            self.created_at = kwargs['created_at']
-            self.updated_at = kwargs['updated_at']
+            self.created_at = datetime(*(kwargs['created_at']))
+            self.updated_at = datetime(*(kwargs['updated_at']))
+        elif args:
+            if len(args) != 3:
+                pass
+            self.id = args[0]
+            self.created_at = datetime(*(args[1]))
+            self.updated_at = datetime(*(args[2]))
         else:
             setattr(self, 'id', str(uuid.uuid4()))
             setattr(self, 'created_at', datetime.now())
             setattr(self, 'updated_at', datetime.now())
-            print("IN INIT", self.__dict__)
             storage.new(self)
 
     def __str__(self):
@@ -47,7 +52,6 @@ class BaseModel:
         value: value
         """
         if hasattr(self, name):
-            print("in set")
             return
         self.__dict__[name] = value
 
@@ -57,5 +61,6 @@ class BaseModel:
         storage.save()
 
     def to_json(self):
+        """Prepares serialization"""
         self.__dict__.update({"__class__": "BaseModel"})
         return self.__dict__
