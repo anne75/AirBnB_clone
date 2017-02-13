@@ -70,4 +70,10 @@ class BaseModel:
     def to_json(self):
         """Prepares serialization"""
         self.__dict__.update({"__class__": self.__class__.__name__})
-        return self.__dict__
+        result = {}
+        for key, value in self.__dict__.items():
+            if isinstance(value, datetime):
+                result[key] = value.isoformat()
+            else:
+                result[key] = value
+        return result
