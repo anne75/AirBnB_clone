@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+import sys
+import os
+sys.path.insert(1, os.path.join(os.path.split(__file__)[0], '../..'))
+print(os.listdir())
+print(sys.path)
 from models.base_model import BaseModel
 
 my_model = BaseModel()

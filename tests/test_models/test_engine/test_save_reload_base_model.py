@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+import sys
+import os
+sys.path.insert(1, os.path.join(os.path.split(__file__)[0], '../../..'))
+
 from models import storage
 from models.base_model import BaseModel
 
