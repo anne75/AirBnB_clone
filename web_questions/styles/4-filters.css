@@ -1,0 +1,29 @@
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.filters {
+    height: 70px;
+    width:  100%;
+    background-color: white;
+    border: solid 1px #dddddd;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    height: 48px;
+    width: 20%;
+    background-color: #ff545f;
+    border:0;
+    border-radius: 4px;
+    float: right;
+    margin: 0px 30px;
+    font-size: 18px;
+}
+
+button:hover, button:focus {
+    background: rgba(255, 84, 95, 0.9);
+}
