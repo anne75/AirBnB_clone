@@ -90,4 +90,5 @@ h1, h2 {
 .description {
     position: relative;
     top: 55px;
+    line-height: 1.25em;
 }
