@@ -8,10 +8,13 @@ fab -f 2-do_deploy_web_static.py do_deploy:archive_path=<path to tar file>
 """
 from fabric.api import *
 import os.path
-
+import sys
 
 env.hosts = ['54.204.151.7', '54.90.224.219']
+env.user = sys.argv[7]
+env.password = sys.argv[5]
 
+print(sys.argv)
 
 def do_deploy(archive_path):
     """
@@ -26,15 +29,16 @@ def do_deploy(archive_path):
         # upload file
         put(archive_path, "/tmp")
 
-        # untar and clean
+        #untar and clean
         filename = archive_path.split("/")[-1]
         dirname = "/data/web_static/releases/{}".format(filename.split(".")[0])
         sudo("mkdir -p {}".format(dirname))
         sudo("tar -xzf /tmp/{} -C {}".format(filename, dirname))
         sudo("rm /tmp/{}".format(filename))
-        sudo("mv {}/web_static/* {}".format(dirname))
+        sudo("mv {}/web_static/* {}".format(dirname, dirname))
         sudo("rm -rf {}/web_static".format(dirname))
-        sudo("ln -sf {} /data/web_static/current".format(dirname))
+        sudo("rm -rf /data/web_static/current")
+        sudo("ln -s {} /data/web_static/current".format(dirname))
         return True
     except:
         return False
