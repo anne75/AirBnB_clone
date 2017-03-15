@@ -9,7 +9,9 @@ fab -f 2-do_deploy_web_static.py do_deploy:archive_path=<path to tar file>
 from fabric.api import *
 import os.path
 
+
 env.hosts = ['54.204.151.7', '54.90.224.219']
+
 
 def do_deploy(archive_path):
     """
@@ -24,7 +26,7 @@ def do_deploy(archive_path):
         # upload file
         put(archive_path, "/tmp")
 
-        #untar and clean
+        # untar and clean
         filename = archive_path.split("/")[-1]
         dirname = "/data/web_static/releases/{}".format(filename.split(".")[0])
         sudo("mkdir -p {}".format(dirname))
