@@ -27,5 +27,5 @@ sudo chown -R ubuntu:ubuntu /data/
 new_string="\n    #set the location of the static site\n    location /hbnb_static {\n        alias /data/web_static/current/;\n   }"
 if [ grep -q /etc/nginx/sites-enabled/default -e "hbnb_static" ]; then
     sed -i "50 i\ $new_string" /etc/nginx/sites-available/default
-
+fi
 sudo service nginx restart
