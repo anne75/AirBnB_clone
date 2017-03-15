@@ -13,13 +13,13 @@ fi
 varpath='/data/web_static/releases/test/'
 mkdir -p "$varpath"
 if [ ! -e "${varpath}"/index.html ]; then
-    echo "<html>Test file index</html>" > "${varpath}/index.html"
+    echo "<html><h1>Test</h1>file index</html>" > "${varpath}/index.html"
 fi
 
 #create a symbolic link
 ln -sf "$varpath" /data/web_static/current
 
-adduser ubuntu #for docker
+# adduser ubuntu for docker
 #update ownership of /data
 sudo chown -R ubuntu:ubuntu /data/
 
