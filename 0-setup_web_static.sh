@@ -10,6 +10,8 @@ if [ "$check1" -eq 1 ]; then
 fi
 
 #set a path to install the web_static pages
+sudo mkdir -p /data/web_static/releases
+sudo mkdir -p /data/web_static/shared
 varpath='/data/web_static/releases/test/'
 sudo mkdir -p "$varpath"
 if [ ! -e "${varpath}"/index.html ]; then
