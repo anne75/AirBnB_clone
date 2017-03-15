@@ -12,8 +12,8 @@ import sys
 
 
 env.hosts = ['54.204.151.7', '54.90.224.219']
-env.user = sys.argv[7]
-env.password = sys.argv[5]
+# env.user = sys.argv[7]
+# env.password = sys.argv[5]
 
 
 def do_deploy(archive_path):
