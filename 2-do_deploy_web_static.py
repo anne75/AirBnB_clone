@@ -10,11 +10,11 @@ from fabric.api import *
 import os.path
 import sys
 
+
 env.hosts = ['54.204.151.7', '54.90.224.219']
 env.user = sys.argv[7]
 env.password = sys.argv[5]
 
-print(sys.argv)
 
 def do_deploy(archive_path):
     """
@@ -29,7 +29,7 @@ def do_deploy(archive_path):
         # upload file
         put(archive_path, "/tmp")
 
-        #untar and clean
+        # untar and clean
         filename = archive_path.split("/")[-1]
         dirname = "/data/web_static/releases/{}".format(filename.split(".")[0])
         sudo("mkdir -p {}".format(dirname))
