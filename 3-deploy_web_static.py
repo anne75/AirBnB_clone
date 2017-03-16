@@ -23,5 +23,4 @@ def deploy():
     if archive_path is None:
         return False
 
-    return_value = do_deploy(archive_path)
-    return return_value
+    return do_deploy(archive_path)
