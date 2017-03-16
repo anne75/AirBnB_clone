@@ -13,8 +13,8 @@ def do_pack():
     """
     filename = "web_static_{:s}.tgz".format(time.strftime("%Y%m%d%H%M%S"))
     try:
-        local("mkdir -p versions")
-        local("tar -cvzf versions/{} web_static/".format(filename))
+        local("sudo mkdir -p versions")
+        local("sudo tar -cvzf versions/{} web_static/".format(filename))
         return "versions/{}".format(filename)
     except:
         pass
