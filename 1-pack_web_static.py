@@ -15,5 +15,6 @@ def do_pack():
     try:
         local("mkdir -p versions")
         local("tar -cvzf versions/{} web_static/".format(filename))
-    except Exception:
+        return "versions/{}".format(filename)
+    except:
         pass
