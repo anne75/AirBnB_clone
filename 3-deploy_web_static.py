@@ -24,5 +24,4 @@ def deploy():
         return False
 
     return_value = do_deploy(archive_path)
-    print(return_value)
     return return_value
