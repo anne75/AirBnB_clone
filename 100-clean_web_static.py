@@ -28,13 +28,14 @@ def clean_local(number=0):
         for f in res[number:]:
             local("rm -f {}".format(f))
 
+
 def clean_server(number=0):
     """
     clean previous versions of web_static
     Args:
     number: number of previous versions to keep
     """
-    path="/data/web_static/releases"
+    path = "/data/web_static/releases"
     with cd(path):
         res = sudo("ls -1t").split("\r\n")
     res = [f for f in res if "web_static" in f]
@@ -45,6 +46,7 @@ def clean_server(number=0):
         with cd(path):
             for f in res:
                 sudo("rm -rf {}".format(f))
+
 
 def do_clean(number=0):
     """
