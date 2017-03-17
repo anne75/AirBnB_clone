@@ -7,24 +7,13 @@ This is module file_storage.
 It defines one class
 """
 
-# json.JSONEncoder.default=lambda self, obj: (obj.isoformat() if isinstance
-# (obj, datetime.datetime) else obj.__dict__)"""
-
 
 class FileStorage:
     """
     Serialize and deserialize objects in models to json
     """
-    def __init__(self, filename="file.json", objects={}):
-        """
-        Creates a FileStorage instance
-
-        Arguments:
-            filename: path to file
-            objects: empty dictionary, not required
-        """
-        self.__file_path = filename
-        self.__objects = objects
+    __file_path = "file.json"
+    __objects = {}
 
     def all(self):
         """Returns __objects"""
@@ -38,10 +27,11 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to file __file_path in json format"""
+        printable = {}
+        for k, v in self.__objects.items():
+            printable[k] = v.to_json()
         with open(self.__file_path, mode='w', encoding='utf-8') as fhandle:
-            json.dump(self.__objects, fhandle, default=lambda obj: (
-                obj.isoformat() if isinstance(
-                    obj, datetime.datetime) else obj.__dict__))
+            json.dump(printable, fhandle)
 
     def reload(self):
         """deserializes the json file __file_path to __objects"""
@@ -49,9 +39,8 @@ class FileStorage:
 
         try:
             with open(self.__file_path, mode='r', encoding='utf-8') as fhandle:
-                self.__objects = json.load(fhandle)
-                # json.load(self.__objects, fhandle.__dict__)
-            for i, j in self.__objects.items():
+                printable = json.load(fhandle)
+            for i, j in printable.items():
                 self.__objects[i] = BaseModel(**j)
         except FileNotFoundError:
             pass
