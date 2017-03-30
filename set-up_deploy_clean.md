@@ -2,7 +2,8 @@
 
 This file aims at presenting what was done to deploy the static website done here (/web_static) on our servers ([image](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/288/aribnb_diagram_0.jpg?cache=off)).  
 
-Tasks:0. Prepare the servers by creating folders, managing the conf files to prepare for the data.(bash)
+Tasks:
+0. Prepare the servers by creating folders, managing the conf files to prepare for the data.(bash)
 1. Prepare the data, archive the files.(fabric)  
 2. Deploy the archive.(fabric)  
 3. Combine 1 and 2 to automate the task.  
