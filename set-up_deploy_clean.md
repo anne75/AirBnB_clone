@@ -1,6 +1,6 @@
 ## Set-up, Deploy the static website, and clean up
 
-This file aims at presenting what was done to deploy the static websote done here on our servers ([image](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/288/aribnb_diagram_0.jpg?cache=off)).  
+This file aims at presenting what was done to deploy the static website done here (/web_static) on our servers ([image](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/288/aribnb_diagram_0.jpg?cache=off)).  
 
 Tasks:  
 0. Prepare the servers by creating folders, managing the conf files to prepare for the data.(bash)  
